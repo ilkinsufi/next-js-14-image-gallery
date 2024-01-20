@@ -37,7 +37,7 @@ export default function NavBar() {
               Dinamik Fetch
             </NavLink>
             <NavLink as={Link} href="/isr" active={pathname === "/isr"}>
-              İSR
+            ISR
             </NavLink>
           </Nav>
         </NavbarCollapse>
