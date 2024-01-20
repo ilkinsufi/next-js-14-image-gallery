@@ -27,7 +27,7 @@ export default async function Page() {
     <div className="d-flex flex-column align-items-center">
       <Alert>
         Bu səhifə{" "}
-        <strong>"Incremental Static Regeneration"-dan istifadə edir.</strong>{" "}
+        <strong>Incremental Static Regeneration-dan istifadə edir.</strong>{" "}
         Hər 15 saniyədən bir yeni şəkil üçün fetch atılır (səhifə yeniləndikdən sonra) və bu ərəfədə səhifəni yeniləsək keşlənmiş şəkil göstərilir.
       </Alert>
 
