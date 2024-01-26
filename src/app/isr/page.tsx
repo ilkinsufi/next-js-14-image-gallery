@@ -1,11 +1,10 @@
 import { UnsplashImage } from "@/models/unsplash-image";
-import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Alert, Button } from "@/components/bootstrap";
+import { Alert } from "@/components/bootstrap";
 
-export const metadata: Metadata = {
-  title: "Incremental Static Regeneration",
+export const metadata = {
+  title: "Incremental Static Regeneration - NextJS 13.4 Image Gallery",
 };
 
 export const revalidate = 15;
@@ -15,7 +14,7 @@ export default async function Page() {
     "https://api.unsplash.com/photos/random?client_id=" +
       process.env.UNSPLASH_ACCESS_KEY,
     {
-      // next: { revalidate: 15 },
+      // next: { revalidate: 15 }
     }
   );
   const image: UnsplashImage = await response.json();
@@ -27,20 +26,19 @@ export default async function Page() {
     <div className="d-flex flex-column align-items-center">
       <Alert>
         Bu səhifə{" "}
-        <strong>Incremental Static Regeneration-dan istifadə edir.</strong>{" "}
-        Hər 15 saniyədən bir yeni şəkil üçün fetch atılır (səhifə yeniləndikdən sonra) və bu ərəfədə səhifəni yeniləsək keşlənmiş şəkil göstərilir.
+        <strong>Incremental Static Regeneration-dan istifadə edir.</strong> Hər
+        15 saniyədən bir yeni şəkil üçün fetch atılır (səhifə yeniləndikdən
+        sonra) və bu ərəfədə səhifəni yeniləsək keşlənmiş şəkil göstərilir.
       </Alert>
-
       <Image
         src={image.urls.raw}
-        alt={image.description}
         width={width}
         height={height}
+        alt={image.description}
         className="rounded shadow mw-100 h-100"
       />
-      <Link href={image.urls.raw} className="mt-3">
-        <Button>Şəkli yüklə</Button>
-      </Link>
+      by{" "}
+      <Link href={"/users/" + image.user.username}>{image.user.username}</Link>
     </div>
   );
 }
